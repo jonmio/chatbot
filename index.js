@@ -6,6 +6,7 @@ const request = require('request')
 const app = express()
 
 function sendTextMessage(sender, text) {
+    console.log ("inside sendTextMessage")
     let messageData = { text:text }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -34,11 +35,14 @@ app.use(bodyParser.json())
 
 // Index route
 app.get('/', function (req, res) {
+  console.log("inside root")
     res.send('Hello world, I am a chat bot')
+
 })
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
+  console.log("get @webhook")
     if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
         res.send(req.query['hub.challenge'])
     }
@@ -46,6 +50,7 @@ app.get('/webhook/', function (req, res) {
 })
 
 app.post('/webhook/', function (req, res) {
+    console.log("post webhook")
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
