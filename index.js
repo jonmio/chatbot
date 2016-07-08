@@ -6,7 +6,7 @@ const request = require('request')
 const app = express()
 
 function sendTextMessage(sender, text) {
-    console.log(sender+"********************")
+    console.log(text+"********************")
     console.log ("inside sendTextMessage")
     let messageData = { text:text }
     request({
