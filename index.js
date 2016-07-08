@@ -5,10 +5,10 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-function sendTextMessage(sender, text) {
+function sendTextMessage(sender, reply) {
     console.log(text+"********************")
     console.log ("inside sendTextMessage")
-    let messageData = { text:text }
+    let messageData = { text:reply }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
