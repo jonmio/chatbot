@@ -52,10 +52,8 @@ app.get('/webhook/', function (req, res) {
 //responding to received messages
 app.post('/webhook/', function (req, res) {
     console.log("***************************** WEB HOOK PoST*****************")
-    console.log("REQ BODY OBJ*************")
-    console.log(Object.keys(req.body.object))
-    console.log("REQ BODY ENTRY************")
-    console.log(Object.keys(req.body.entry))
+    console.log("REQ BODY ENTRY[0]************")
+    console.log(Object.keys(req.body.entry[0]))
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
