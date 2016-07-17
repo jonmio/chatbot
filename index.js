@@ -40,7 +40,6 @@ app.get('/', function (req, res) {
 
 })
 
-for Facebook verification
 app.get('/webhook/', function (req, res) {
   // console.log("get @webhook")
     if (req.query['hub.verify_token'] === 'qwerty123') {
