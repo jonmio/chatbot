@@ -51,6 +51,7 @@ app.get('/webhook/', function (req, res) {
 
 //responding to received messages
 app.post('/webhook/', function (req, res) {
+    console.log("***************************** WEB HOOK PoST*****************")
     console.log("REQ BODY OBJ*************")
     console.log(Object.keys(req.body.object))
     console.log("REQ BODY ENTRY************")
