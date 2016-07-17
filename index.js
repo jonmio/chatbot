@@ -60,10 +60,8 @@ app.post('/webhook/', function (req, res) {
 
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
-        console.log("REQ BODY ENTRY MESSAGING[i] timesstamp")
-        console.log(event.timestamp)
-        console.log("MESSAGE")
-        console.log(Object.keys(event.message))
+        console.log("event")
+        console.log(Object.keys(event))
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
