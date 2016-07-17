@@ -51,17 +51,15 @@ app.get('/webhook/', function (req, res) {
 
 //responding to received messages
 app.post('/webhook/', function (req, res) {
-  //req.body.entry always only has index 0 as key
+  //req.body.entry has only 0 as key if events are not batched
     console.log("***************************** WEB HOOK PoST*****************")
-    console.log("REQ BODY ENTRY[0] time************")
-    console.log(req.body.entry[0].time)
-    console.log("REQ BODY ENTRY[0] messaging************")
-    console.log(Object.keys(req.body.entry[0].messaging))
-    console.log("END*********************************************************************")
 
+    //handling messaging events
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
+        console.log("REQ BODY ENTRY MESSAGING[i] attributes****")
+        console.log(Object.keys(event))
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
