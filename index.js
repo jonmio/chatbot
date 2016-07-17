@@ -43,7 +43,7 @@ app.get('/', function (req, res) {
 for Facebook verification
 app.get('/webhook/', function (req, res) {
   // console.log("get @webhook")
-    if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
+    if (req.query['hub.verify_token'] === 'qwerty123') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
