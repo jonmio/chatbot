@@ -51,10 +51,10 @@ app.get('/webhook/', function (req, res) {
 
 //responding to received messages
 app.post('/webhook/', function (req, res) {
+  //req.body.entry always only has index 0 as key
     console.log("***************************** WEB HOOK PoST*****************")
-    console.log(Object.keys(req.body.entry))
     console.log("REQ BODY ENTRY[0] time************")
-    console.log(req.body.entry[0].time[0])
+    console.log(req.body.entry[0].time)
     console.log("REQ BODY ENTRY[0] messaging************")
     console.log(Object.keys(req.body.entry[0].messaging))
     console.log("END*********************************************************************")
