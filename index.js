@@ -47,6 +47,7 @@ app.get('/', function (req, res) {
 //         res.send(req.query['hub.challenge'])
 //     }
 //     res.send('Error, wrong token')
+//test
 // })
 
 app.post('/webhook/', function (req, res) {
