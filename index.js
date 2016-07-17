@@ -52,7 +52,7 @@ app.get('/webhook/', function (req, res) {
 //responding to received messages
 app.post('/webhook/', function (req, res) {
     console.log("***************************** WEB HOOK PoST*****************")
-    console.log(Object.keys(req.body))
+    console.log(Object.keys(req.body.entry))
     console.log("REQ BODY ENTRY[0] id************")
     console.log(Object.keys(req.body.entry[0].id))
     console.log("REQ BODY ENTRY[0] time************")
