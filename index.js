@@ -1,10 +1,13 @@
 'use strict'
 
+//dependancies
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
+
+//Send message using graph api
 function sendTextMessage(sender, reply) {
     // console.log ("inside sendTextMessage")
     let messageData = { text:reply }
@@ -25,6 +28,7 @@ function sendTextMessage(sender, reply) {
     })
 }
 
+//set port
 app.set('port', (process.env.PORT || 3000))
 
 // Process application/x-www-form-urlencoded
@@ -35,12 +39,10 @@ app.use(bodyParser.json())
 
 // Index route
 app.get('/', function (req, res) {
-  // console.log("inside root")
     res.send('Hello world, I am a chat bot')
-
 })
 
-//only used once
+//only used once to config with facebook apps
 app.get('/webhook/', function (req, res) {
   // console.log("get @webhook")
     if (req.query['hub.verify_token'] === 'qwerty123') {
@@ -49,6 +51,7 @@ app.get('/webhook/', function (req, res) {
     res.send('Error, wrong token')
 })
 
+//responding to received messages
 app.post('/webhook/', function (req, res) {
     // console.log("post webhook")
     console.log(req.body+'*********')
@@ -66,6 +69,7 @@ app.post('/webhook/', function (req, res) {
 })
 
 const token = process.env.FB_PAGE_ACCESS_TOKEN
+
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
