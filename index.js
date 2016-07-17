@@ -9,7 +9,6 @@ const app = express()
 
 //Send message using graph api
 function sendTextMessage(sender, reply) {
-    // console.log ("inside sendTextMessage")
     let messageData = { text:reply }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -44,7 +43,6 @@ app.get('/', function (req, res) {
 
 //only used once to config with facebook apps
 app.get('/webhook/', function (req, res) {
-  // console.log("get @webhook")
     if (req.query['hub.verify_token'] === 'qwerty123') {
         res.send(req.query['hub.challenge'])
     }
@@ -54,7 +52,9 @@ app.get('/webhook/', function (req, res) {
 //responding to received messages
 app.post('/webhook/', function (req, res) {
     console.log("REQ BODY OBJ*************")
-    console.log(Object.keys(req.body))
+    console.log(Object.keys(req.body.object))
+    console.log("REQ BODY ENTRY************")
+    consoel.log(Object.keys(req.body.entry))
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
