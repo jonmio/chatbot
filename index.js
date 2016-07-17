@@ -40,13 +40,14 @@ app.get('/', function (req, res) {
 
 })
 
-// app.get('/webhook/', function (req, res) {
-//   // console.log("get @webhook")
-//     if (req.query['hub.verify_token'] === 'qwerty123') {
-//         res.send(req.query['hub.challenge'])
-//     }
-//     res.send('Error, wrong token')
-// })
+//only used once
+app.get('/webhook/', function (req, res) {
+  // console.log("get @webhook")
+    if (req.query['hub.verify_token'] === 'qwerty123') {
+        res.send(req.query['hub.challenge'])
+    }
+    res.send('Error, wrong token')
+})
 
 app.post('/webhook/', function (req, res) {
     // console.log("post webhook")
