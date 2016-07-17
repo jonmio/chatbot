@@ -54,7 +54,7 @@ app.post('/webhook/', function (req, res) {
     console.log("***************************** WEB HOOK PoST*****************")
     console.log(Object.keys(req.body.entry))
     console.log("REQ BODY ENTRY[0] time************")
-    console.log(Object.keys(req.body.entry[0].time[0]))
+    console.log(req.body.entry[0].time[0])
     console.log("REQ BODY ENTRY[0] messaging************")
     console.log(Object.keys(req.body.entry[0].messaging))
     console.log("END*********************************************************************")
