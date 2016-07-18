@@ -60,10 +60,9 @@ app.post('/webhook/', function (req, res) {
 
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
-        console.log("event")
-        console.log(event.message.text)
-        console.log(event.message.seq)
-        console.log(event.message.mid)
+        if (event.message.text){
+          console.log(event.message.text)
+        }
         //comment
         let sender = event.sender.id
         if (event.message && event.message.text) {
