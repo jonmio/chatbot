@@ -63,7 +63,7 @@ app.post('/webhook/', function (req, res) {
         console.log(Object.keys(event))
         let sender = event.sender.id
         console.log(sender)
-        if (event.message && event.message.text) {
+        if (event.message && event.message.text && (event.message.is_echo != true)) {
             console.log(Object.keys(event.message))
             console.log(event.message.seq)
             console.log(event.message.mid)
