@@ -69,7 +69,8 @@ app.post('/webhook/', function (req, res) {
             console.log(event.message.mid)
             let text = event.message.text
             console.log(text)
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 400))
+            //300 char length cap
+            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 300))
         }
     }
     res.sendStatus(200)
