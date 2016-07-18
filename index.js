@@ -64,6 +64,7 @@ app.post('/webhook/', function (req, res) {
         console.log(event.message.text)
         console.log(event.message.seq)
         console.log(event.message.mid)
+        //comment
         let sender = event.sender.id
         if (event.message && event.message.text) {
             console.log("here")
