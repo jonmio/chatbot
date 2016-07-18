@@ -57,12 +57,12 @@ app.post('/webhook/', function (req, res) {
     //handling messaging events
     let messaging_events = req.body.entry[0].messaging
     //messaging events has attributes id,time,messaging
-
+    //usually four post requets 1) message, 2) reply 3) Confirmation of delivery 4) read recepit
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         console.log(Object.keys(event))
-        //comment
         let sender = event.sender.id
+        console.log(sender)
         if (event.message && event.message.text) {
             console.log("here")
             let text = event.message.text
