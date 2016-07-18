@@ -62,6 +62,7 @@ app.post('/webhook/', function (req, res) {
         let event = req.body.entry[0].messaging[i]
         console.log(Object.keys(event))
         let sender = event.sender.id
+        res.sendStatus(200)
         //check if it is a message event taht is not a reply the server sent
         if (event.message && event.message.text && (event.message.is_echo != true)) {
             console.log(Object.keys(event.message))
@@ -70,10 +71,10 @@ app.post('/webhook/', function (req, res) {
             let text = event.message.text
             console.log(text)
             //300 char length cap
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 300))
+            sendTextMessage(sender, "Text received, echo:" + text.substring(0, 300))
         }
     }
-    res.sendStatus(200)
+
 })
 
 const token = process.env.FB_PAGE_ACCESS_TOKEN
