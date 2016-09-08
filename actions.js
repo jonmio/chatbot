@@ -139,11 +139,11 @@ function waitforResponse(feedbackPerson){
         }
 
       })
-      score = (score/total_replies).toFixed(2)
+      score = (score/total_replies).toFixed(1)
       giveFeedback(feedbackPerson, score, comments)
       endPoll(feedbackPerson);
     })
-      },6000, feedbackPerson)
+  },60000, feedbackPerson)
   // },600000, feedbackPerson)
 }
 function endPoll(person){
@@ -152,18 +152,18 @@ function endPoll(person){
     var fid;
       r.fashionTeam.forEach(function(teammate){
         fid = teammate.teammateId
-        if (teammate.score === null){
+        if (teammate.status !== "free"){
           sendTextMessage(fid, "The poll has now ended.")
           db.collection("users").updateOne({facebook_id: fid},{$set: {status: "free"}})
         }
       })
-      db.collection("users").updateOne({facebook_id: person}, {$unset: {fashionTeam:""}})
+      db.collection("users").updateOne({facebook_id: person}, {$unset: {fashionTeam:""}, $set: {status: "free"}})
   })
 }
 
 function giveFeedback(person, score, comments){
-  var msg = "So I've asked around, and people rated your last outfit a " + score+ " out of five!"
-  comments.length > 0 ? (msg += "Here's some specific feedback people gave.") : null
+  var msg = "So I've asked around, and people rated your last outfit a " + score+ " out of 5!"
+  comments.length > 0 ? (msg += " Here's some specific feedback people gave.") : null
   sendTextMessage(person, msg)
   comments.forEach(function(feedback){
     sendTextMessage(person, feedback)

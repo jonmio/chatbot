@@ -46,24 +46,10 @@ var handle = function(event){
           case "No":
             return Misc.endConversation(sender);
         }
-        return Misc.sendTextMessage(sender, "This button is no longer valid...")
       }
+      return Misc.sendTextMessage(sender, "This button is no longer valid...")
     })
   }
-
-  //postback trolls
-  // else{
-  //   db.collection("users").findOne({facebook_id: sender},function(err,r){
-  //     switch (r.status){
-  //       case "free":
-  //         return sendTextMessage(sender, "The button you clicked is no longer valid.")
-  //       case "waiting feedback":
-  //         return sendTextMessage(sender, "The button you clicked is no longer valid, but we'll give you feedback on your outfit in a couple minutes. We're waiting on a few responses!")
-  //       case "writing feedback":
-  //         return sendTextMessage(sender, "The button you clicked is no longer valid. We can only process text-based feedback.")
-  //     }
-  //   })
-  // }
 }
 
 exports.handle = handle;
